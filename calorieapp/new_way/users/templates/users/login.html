@@ -1,0 +1,21 @@
+{% extends 'base.html' %}{% block title %}
+<title>Login user</title>
+{% endblock %} {% block content %}
+<form class="login-form" action="{% url 'users:login' %}" method="POST">
+    {% csrf_token %} 
+
+        <label for="id_email">Email:</label>
+          <input type="email" name="email" value="laura@laura.com" class="form-control  mb-3" placeholder="Email" maxlength="50" required="" id="id_email">
+
+        <label for="id_password">Password:</label>
+        
+          <input type="password" name="password" class="form-control mb-3" placeholder="Password" required="" id="id_password">
+
+    <input type="submit" value="Login">
+</form>
+<a href="{% url 'users:register' %}"><center>Don't have an account? Sign up!</center></a>
+{% endblock %}
+
+{% if msg %}  
+    message: {{msg}}
+{% endif %}

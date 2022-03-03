@@ -1,0 +1,27 @@
+{
+    "restoreTerminals.terminals": [
+        {
+            "splitTerminals": [
+              {
+                "name": "server",
+                "commands": ["& c:/Users/Laura/Desktop/proiect/Scripts/Activate.ps1"
+                  ,"$env:DJANGO_SETTINGS_MODULE = 'calorie_app.settings'"
+                  ,"python manage.py runserver"]
+              }
+            ]
+          },
+          {
+            "splitTerminals": [
+              {
+                "name": "work",
+              }
+            ]
+          }
+    ],
+    "python.venvFolders": [
+      "../"
+  ],
+  "code-runner.executorMap": {
+    "python": "\"$pythonPath\" $fullFileName",
+    },
+}

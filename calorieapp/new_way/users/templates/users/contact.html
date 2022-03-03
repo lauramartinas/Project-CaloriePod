@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<head>
+	<style>
+		h1 {text-align: center;}
+		p {text-align: center;}
+		div {text-align: center;}
+	</style>
+	</head>
+	<div style="margin:80px">
+		<h1 style = "color:#aae91b">About us </h1>
+		<p style = "color:#fca921">
+			CaloriePod gives you access to the biggest food database.
+			Easily log everything you eat to your food diary for detailed insights about your nutrition. It’s a free nutrition tracker, calorie tracker, and macro tracker in one!
+			CaloriePod isn’t just a meal tracker—or for counting calories.
+			You’ll learn about your habits, get empowered to make smarter choices and find the motivation to get healthy, stay healthy, and conquer all your goals.
+		</p>
+
+		<h2 style = "color:#aae91b">Contact</h2>
+
+		<h4 style = "color:#bbfc28">Contact us directly if you have any questions.</h4>
+
+		<p style = "color:#fca921">
+			Please write your name, email address and a message below if you have any questions.
+			One of our staff members will be happy to contact you directly and answer your questions as soon as possible.
+		</p>
+		<form method="post">
+        {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" style="color:#fca921">Submit</button>
+        </form>
+    </div>
+{% endblock content %}
+

@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-lg-6">
+    <div class="login">
+        <div class="login-screen">
+            <div class="app-title">
+                <h1 class="headline">Add Food</h1>
+            </div>
+            <div>
+
+            <form method="POST" action="" class="login-form form-inline">
+              {% csrf_token %}
+              
+                {% for field in form %}
+                <h5 class="form-labels">
+                {{ field.label }}
+                </h5>
+                {{ field }}
+                 
+                {% endfor %}
+           
+                <input class="mt-2 btn" type="submit" value="Select">
+
+            </form>
+            </div>
+           
+        </div>
+        
+    </div>
+    </div>
+    <div class="col-lg-6 ">
+    <div class="login">
+        <div class="login-screen">
+              <form method="get">
+                  <h1 class="headline">{{ myFilter.form }}</h1>
+<!--                  <button class="btn mt-2" type="submit"> Search </button>-->
+              </form> 
+        </div>
+    </div>
+
+        <h1 class="headline"> All Food Items </h1>
+        <table class="table table-bordered text-center mt-3">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Food Name</th>
+                    <th scope="col">Calories</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for food in food_list %}
+                <tr>
+                    <td>{{ food.name }}</td>
+                    <td>{{ food.calorie }}</td>
+                    <td>{{ food.quantity }}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>  
+
+
+
+
+
+        {% if is_paginated %}
+        <div class="d-flex  flex-column ">
+           <ul class="pagination d-flex flex-row justify-content-center">
+               {% if page_obj.has_previous %}
+               <li><a class="btn" style="width:60px;height:30px;" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+               {% else %}
+               <li class="disabled btn" style="width:60px;height:30px;"><span>&laquo;</span></li>
+               {% endif %} {% for i in paginator.page_range %} {% if page_obj.number == i %}
+               <li class="active btn btn-info" style="width:60px;height:30px;"><span>{{ i }} <span class="sr-only">(curent)</span></span>
+               </li>
+               {% else %}
+               <li><a class="btn" style="width:60px;height:30px;" href="?page={{ i }}">{{ i }}</a></li>
+               {% endif %} {% endfor %} {% if page_obj.has_next %}
+               <li><a class="btn" style="width:60px;height:30px;" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+               {% else %}
+               <li class="disabled btn" style="width:60px;height:30px;"><span>&raquo;</span></li>
+               {% endif %}
+           </ul>
+           <div class="d-flex flex-row justify-content-center">
+               <span class="align-right">Showing {{ page_obj.start_index }}-{{ page_obj.end_index }} of {{ page_obj.paginator.count }}</span>
+           </div>
+        </div>
+        {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+</div>
+
+{% endblock content %}

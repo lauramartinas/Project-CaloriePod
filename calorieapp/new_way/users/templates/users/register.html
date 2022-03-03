@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="login">
+        <div class="login-screen">
+            <div class="app-title">
+                <h1>Register</h1>
+            </div>
+
+            <form method="POST" action="{% url 'users:register' %}" class="login-form">
+              {% csrf_token %} 
+                 
+      <label for="id_first_name">First name:</label>
+       
+        <input type="text" name="first_name" placeholder="First Name" maxlength="255" required="" id="id_first_name" class=" form-control">
+    
+      <label for="id_last_name">Last name:</label>
+      
+        <input type="text" name="last_name" placeholder="Last Name" maxlength="255" required="" id="id_last_name" class=" form-control">
+        
+      <label for="id_email">Email:</label>
+      
+        <input type="email" name="email" maxlength="255" required="" id="id_email" placeholder="E-mail" class=" form-control">
+
+      <label for="id_password">Password:</label>
+
+        <input type="password" name="password" maxlength="255" required="" id="id_password" placeholder="Enter Password" class=" form-control">
+
+      <label for="id_password_confirmation">Confirm password:</label>
+      
+        <input type="password" name="password_confirmation" maxlength="255" required="" id="id_password_confirmation" placeholder="Confirm Password" class=" form-control">
+        
+                <input class="btn btn-primary btn-large btn-block" type="submit" name="Register">
+
+            </form>
+
+            <div class="d-flex justify-content-center links mt-8">
+            Already have an account? <a href="{% url 'users:login' %}" class="ml-4">Login</a>
+          </div>
+        </div>{{form.errors}}
+    </div>
+    <script>
+
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder='First Name';
+    form_fields[2].placeholder='Last Name';
+    form_fields[3].placeholder='E-mail';
+    form_fields[4].placeholder='Enter Password';
+
+
+    for (var field in form_fields){ 
+      form_fields[field].className += ' form-control'
+    }
+  </script>
+
+{% endblock content %}
